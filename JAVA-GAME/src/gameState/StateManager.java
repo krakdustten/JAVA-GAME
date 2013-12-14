@@ -4,8 +4,13 @@ import java.util.ArrayList;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.KeyListener;
+import org.newdawn.slick.MouseListener;
 
-public class StateManager
+public class StateManager implements KeyListener, MouseListener
 {
 	private ArrayList<State> states;
 	private int currentState = -1;
@@ -13,8 +18,12 @@ public class StateManager
 	public final int MAINMANUSTATE = 0;
 	public final int PLAYSTATE = 1;
 	
-	public StateManager()
+	public StateManager(GameContainer con)
 	{
+		Input input = con.getInput();
+		input.addKeyListener(this);
+		input.addMouseListener(this);
+		
 		states = new ArrayList<State>();
 		states.add(new MainMenuState(this));
 		states.add(new PlayState(this));
@@ -32,50 +41,56 @@ public class StateManager
 		states.get(currentState).init();
 	}
 	
-	public void update()
+	public void update(GameContainer con)
 	{
-		while (Keyboard.next()) 
-		{
-			if (Keyboard.getEventKeyState())
-			{
-				states.get(currentState).KeyPressed(Keyboard.getEventKey());
-			}
-			else
-			{
-				states.get(currentState).KeyReleased(Keyboard.getEventKey());
-			}
-		}
-		
-		while (Mouse.next())
-		{
-			if (Mouse.getEventButton() == -1)
-			{
-				if (Mouse.getEventDWheel() == 0)
-				{
-					states.get(currentState).MouseMove(Mouse.getEventX(), Mouse.getEventY(), Mouse.getEventDX(), Mouse.getEventDY());
-				}
-				else
-				{
-					states.get(currentState).MouseWheelMoved(Mouse.getEventDWheel());
-				}
-			}
-			else
-			{
-				if (Mouse.getEventButtonState())
-				{
-					states.get(currentState).MousePressed(Mouse.getEventButton());
-				}
-				else
-				{
-					states.get(currentState).MousePressed(Mouse.getEventButton());
-				}
-			}
-		}
 		states.get(currentState).update();
 	}
 	
-	public void draw()
+	public void draw(Graphics g)
 	{
-		states.get(currentState).draw();
+		states.get(currentState).draw(g);
+	}
+
+	public void inputEnded() {}
+	public void inputStarted() {}
+	public boolean isAcceptingInput() {return true;}
+	public void setInput(Input arg0) {}
+
+	public void mouseClicked(int button, int x, int y, int clickCount)
+	{
+	}
+
+	public void mouseDragged(int oldx, int oldy, int newx, int newy) 
+	{
+	}
+
+	public void mouseMoved(int oldx, int oldy, int newx, int newy)
+	{
+		states.get(currentState).MouseMove(oldx, oldy, newx, newy);
+	}
+
+	public void mousePressed(int button, int x, int y) 
+	{
+		
+	}
+
+	public void mouseReleased(int button, int x, int y) 
+	{
+		
+	}
+
+	public void mouseWheelMoved(int change) 
+	{
+		
+	}
+
+	public void keyPressed(int key, char c) 
+	{
+		
+	}
+
+	public void keyReleased(int key, char c)
+	{
+		
 	}
 }

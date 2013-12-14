@@ -1,23 +1,24 @@
 package main;
 
+import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.SlickException;
+
 public class Main 
 {
 	public static Game game;
-	public static GameLoader loader;
-	private static Thread gameThread;
-	private static Thread loaderThread;
 	
 	public static void main(String[] args)
 	{
-		game = new Game();
-		loader = new GameLoader();
-		
-		gameThread = new Thread(game);
-		gameThread.setPriority(Thread.MAX_PRIORITY);
-		gameThread.start();
-		
-		loaderThread = new Thread(loader);
-		loaderThread.setPriority(Thread.NORM_PRIORITY);
-		loaderThread.start();
+		game = new Game("NO NAME GAME");
+		AppGameContainer container;
+		try 
+		{
+			container = new AppGameContainer(game);
+			container.start();
+		} 
+		catch (SlickException e)
+		{
+			e.printStackTrace();
+		}
 	}
 }
