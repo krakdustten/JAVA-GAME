@@ -14,6 +14,8 @@ public class Main
 		try 
 		{
 			container = new AppGameContainer(game);
+			container.setMaximumLogicUpdateInterval(11);
+			container.setMinimumLogicUpdateInterval(9);
 			container.start();
 		} 
 		catch (SlickException e)

@@ -1,10 +1,11 @@
 package gameState;
 
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 public class PlayState extends State
 {
-	public PlayState(StateManager stateManager) 
+	public PlayState(StateManager stateManager, GameContainer gc) 
 	{
 		sm = stateManager;
 	}

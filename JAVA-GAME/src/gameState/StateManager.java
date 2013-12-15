@@ -2,8 +2,6 @@ package gameState;
 
 import java.util.ArrayList;
 
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -25,8 +23,8 @@ public class StateManager implements KeyListener, MouseListener
 		input.addMouseListener(this);
 		
 		states = new ArrayList<State>();
-		states.add(new MainMenuState(this));
-		states.add(new PlayState(this));
+		states.add(new MainMenuState(this, con));
+		states.add(new PlayState(this, con));
 		
 		Setstate(MAINMANUSTATE);
 	}
@@ -37,7 +35,7 @@ public class StateManager implements KeyListener, MouseListener
 		{
 			states.get(currentState).deinit();
 		}
-		currentState = MAINMANUSTATE;
+		currentState = state;
 		states.get(currentState).init();
 	}
 	
@@ -71,26 +69,26 @@ public class StateManager implements KeyListener, MouseListener
 
 	public void mousePressed(int button, int x, int y) 
 	{
-		
+		states.get(currentState).MousePressed(button, x, y);
 	}
 
 	public void mouseReleased(int button, int x, int y) 
 	{
-		
+		states.get(currentState).MouseReleased(button, x, y);
 	}
 
 	public void mouseWheelMoved(int change) 
 	{
-		
+		states.get(currentState).MouseWheelMoved(change);
 	}
 
 	public void keyPressed(int key, char c) 
 	{
-		
+		states.get(currentState).KeyPressed(key, c);
 	}
 
 	public void keyReleased(int key, char c)
 	{
-		
+		states.get(currentState).KeyReleased(key, c);
 	}
 }

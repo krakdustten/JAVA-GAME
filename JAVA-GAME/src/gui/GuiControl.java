@@ -15,8 +15,8 @@ public abstract class GuiControl
 	public void KeyPressed(int key){}
 	public void KeyReleased(int key){}
 	
-	public void MousePressed(int key){}
-	public void MouseReleased(int key){}
+	public void MousePressed(int key,int x, int y){}
+	public void MouseReleased(int key,int x, int y){}
 	public void MouseMove(int x, int y, int dx, int dy){}
 	public void MouseWheelMoved(int d){}
 }
