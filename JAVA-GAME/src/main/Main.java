@@ -14,9 +14,12 @@ public class Main
 		try 
 		{
 			container = new AppGameContainer(game);
+			container.setFullscreen(true);
+			container.setDisplayMode(container.getScreenWidth(), container.getScreenHeight(),true);
 			container.setMaximumLogicUpdateInterval(11);
 			container.setMinimumLogicUpdateInterval(9);
 			container.start();
+			
 		} 
 		catch (SlickException e)
 		{

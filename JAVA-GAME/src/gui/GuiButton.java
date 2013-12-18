@@ -19,7 +19,7 @@ public class GuiButton extends GuiControl
 	private ActionListener action;
 	
 	private Image im,imHover,imClick;
-	public String text = "TEST";
+	public String text = "";
 	TrueTypeFont ttf;
 	
 	public GuiButton(String file, String fileHover, String fileClick, String text, String fontFile, int ID, ActionListener action)

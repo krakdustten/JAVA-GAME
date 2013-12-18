@@ -1,11 +1,11 @@
 package menu;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-
 import gameState.MainMenuState;
 import gameState.StateManager;
 import gui.GuiButton;
+
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 
 public class MainMenu extends Menu 
 {

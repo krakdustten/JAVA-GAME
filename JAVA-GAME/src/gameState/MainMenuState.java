@@ -2,19 +2,21 @@ package gameState;
 
 import menu.MainMenu;
 import menu.Menu;
+import menu.OptionsMenu;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 public class MainMenuState extends State
 {
-	private Menu[] menus = new Menu[1];
+	private Menu[] menus = new Menu[2];
 	private int currentmenu = 0;
 	
 	public MainMenuState(StateManager stateManager, GameContainer gc) 
 	{
 		sm = stateManager;
 		menus[0] = new MainMenu(gc,this,sm);
+		menus[1] = new OptionsMenu(gc,this,sm);
 	}
 	
 	public void setMenu(int ID)
