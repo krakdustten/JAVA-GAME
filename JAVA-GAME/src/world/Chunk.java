@@ -1,5 +1,7 @@
 package world;
 
+//TODO comments
+
 import blocks.Block;
 
 public class Chunk 

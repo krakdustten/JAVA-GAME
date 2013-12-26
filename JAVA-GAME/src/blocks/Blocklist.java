@@ -1,5 +1,7 @@
 package blocks;
 
+//TODO comments
+
 public class Blocklist 
 {
 	private Block[] blocks = new Block[16384];

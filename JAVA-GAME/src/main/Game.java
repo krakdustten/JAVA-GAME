@@ -1,5 +1,7 @@
 package main;
 
+//TODO comments
+
 import gameState.StateManager;
 
 import org.newdawn.slick.BasicGame;

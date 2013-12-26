@@ -1,5 +1,7 @@
 package menu;
 
+//TODO comments
+
 import org.newdawn.slick.Graphics;
 
 import gui.ActionListener;

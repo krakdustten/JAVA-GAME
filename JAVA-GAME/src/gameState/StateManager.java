@@ -1,5 +1,7 @@
 package gameState;
 
+//TODO comments
+
 import java.util.ArrayList;
 
 import org.newdawn.slick.GameContainer;

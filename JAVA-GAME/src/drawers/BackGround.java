@@ -1,5 +1,7 @@
 package drawers;
 
+//TODO comments
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -7,7 +9,7 @@ import org.newdawn.slick.Image;
 
 public class BackGround 
 {
-	private Image normalBackground;
+	//private Image normalBackground;
 	private Color backgroundcolor;
 	private GameContainer gc;
 	
@@ -23,7 +25,7 @@ public class BackGround
 	
 	public void SetNormalBackground(Image image)
 	{
-		normalBackground = image;
+		//normalBackground = image;
 	}
 	
 	public void draw(Graphics g)

@@ -1,5 +1,7 @@
 package blocks;
 
+//TODO comments
+
 import drawers.Render;
 
 public class BlockAir extends Block

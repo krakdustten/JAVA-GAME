@@ -1,5 +1,7 @@
 package gui;
 
+//TODO comments
+
 import org.newdawn.slick.Graphics;
 
 public abstract class GuiControl 

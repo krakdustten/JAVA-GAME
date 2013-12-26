@@ -1,5 +1,7 @@
 package blocks;
 
+//TODO comments
+
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
