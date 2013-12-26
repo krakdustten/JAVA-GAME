@@ -4,12 +4,16 @@ import gameState.MainMenuState;
 import gameState.StateManager;
 import gui.GuiButton;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
+import drawers.BackGround;
+
 public class MainMenu extends Menu 
 {
-	GuiButton[] buttons = new GuiButton[3];
+	private GuiButton[] buttons = new GuiButton[3];
+	private BackGround background;
 	private GameContainer gc;
 	private MainMenuState mms;
 	private StateManager sm;
@@ -19,6 +23,10 @@ public class MainMenu extends Menu
 		this.gc = gc;
 		this.mms = mms;
 		this.sm = sm;
+		
+		background = new BackGround(gc);
+		background.SetBackGroundColor(Color.green);
+		
 		buttons[0] = new GuiButton("res/text.png","res/hov.png","res/click.png","Start", "res/Font.ttf",0,this);
 		buttons[0].setPos(100, 100);
 		buttons[1] = new GuiButton("res/text.png","res/hov.png","res/click.png","Options", "res/Font.ttf",1,this);
@@ -52,6 +60,8 @@ public class MainMenu extends Menu
 	}
 	public void draw(Graphics g) 
 	{
+		background.draw(g);
+		
 		for (GuiButton button : buttons)
 		{
 			button.draw(g);

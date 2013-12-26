@@ -14,6 +14,6 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="JAVA-GAME/lib/windows"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/slick.jar"/>
+	<classpathentry kind="lib" path="lib/slick.jar" sourcepath="lib/src/slick"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
