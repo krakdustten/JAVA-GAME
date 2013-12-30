@@ -11,7 +11,7 @@ public class BlockAir extends Block
 		ID = id;
 	}
 	
-	public void draw(float sx, float sy, Render render)
+	public void draw(float sx, float sy, Render render, int textureId)
 	{
 	}
 }

@@ -2,6 +2,8 @@ package gameState;
 
 //TODO comments
 
+import java.util.Random;
+
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -22,7 +24,7 @@ public class PlayState extends State
 		sm = stateManager;
 		blocklist = new Blocklist();
 		renderer = new NormalRenderer(gc,this);
-		world = new Planet(this);
+		
 	}
 	
 	public World getDrawWorld()
@@ -30,7 +32,10 @@ public class PlayState extends State
 		return world;
 	}
 	
-	public void init() {}
+	public void init() 
+	{
+		world = new Planet(this);
+	}
 	public void update() {}
 	public void draw(Graphics g)
 	{
@@ -41,7 +46,25 @@ public class PlayState extends State
 	public void KeyPressed(int key, char c) {}
 	public void KeyReleased(int key, char c) {}
 
-	public void MousePressed(int button, int x, int y){}
+	public void MousePressed(int button, int x, int y)
+	{
+		int x1 = (int)(renderer.x + 1.0);
+		int y1 = (int)(renderer.y + 1.0);
+		
+		System.out.println(button);
+		
+		if(button == 0)
+		{
+			world.setBlockId(x1, y1, 1);
+			world.getBlock(x1, y1).UpdateNeibeurs(x1, y1, world, new Random());
+		}
+		else if(button == 1)
+		{
+			world.setBlockId(x1, y1, 0);
+			world.getBlock(x1, y1).UpdateNeibeurs(x1, y1, world, new Random());
+		}
+			
+	}
 	public void MouseReleased(int button, int x, int y) {}
 	public void MouseMove(int x, int y, int nx, int ny)
 	{

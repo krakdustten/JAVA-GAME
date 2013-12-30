@@ -1,5 +1,7 @@
 package world;
 
+//TODO comments
+
 import blocks.Block;
 import gameState.PlayState;
 
@@ -20,6 +22,8 @@ public abstract class World
 	 * @param y the y coordinate of the block*/
 	public abstract Block getBlock(int x, int y);
 	
+	public abstract void setBlockId(int x, int y, int ID);
+	
 	/**make the world ready to spawn the player
 	 * @param x the x coordinate where the player wants to spawn
 	 * @param y the y coordinate where the player wants to spawn*/
@@ -34,4 +38,8 @@ public abstract class World
 	 * @param y the y coordinate of the chunk that needs to be loaded
 	 * @param size how much chunks that will be loaded around the chunk*/
 	public abstract void generateOrLoadWorld(int x, int y, int size);
+	
+	public abstract int getTextureId(int i, int j) ;
+	public abstract int getBlockId(int i, int j);
+	public abstract void setBlockTextureId(int i, int j, int k) ;
 }

@@ -16,7 +16,7 @@ public class NormalRenderer
 	public float x = 50;
 	public float y = 50;
 	
-	private float zoom = 2.0f;
+	private float zoom = 1.0f;
 	
 	public NormalRenderer(GameContainer gc, PlayState playState)
 	{
@@ -32,19 +32,21 @@ public class NormalRenderer
 		g.translate(width/2, height/2);
 		g.scale(zoom, zoom);
 		g.translate(-width/2, -height/2);
+		width = (int) (width / zoom);
+		height = (int) (height / zoom);
 		
 		int blockx = (int)x;
 		int blocky = (int)y;
 		
 		float xrest = x- (float)(int)x;		
 		float yrest = y- (float)(int)y;	
-		int blockdrawstartx = blockx - width/16 - 1;
-		int blockdrawstarty = blocky - height/16 - 1;
-		float screendrawstartx = -16 * xrest - 16;
-		float screendrawstarty = -16 * yrest - 16;
+		int blockdrawstartx = blockx - width/64 - 1;
+		int blockdrawstarty = blocky - height/64 - 1;
+		float screendrawstartx = (-32 * xrest - 32) -(((1 / zoom)-1)*gc.getWidth())/2;
+		float screendrawstarty = (-32 * yrest - 32) -(((1 / zoom)-1)*gc.getHeight())/2;
 		
-		int blockwidth = width/16 + 3;
-		int blockheight = height/16 + 3;
+		int blockwidth = width/32 + 3;
+		int blockheight = height/32 + 3;
 		
 		for(int i = 0; i < blockwidth; i++)
 		{
@@ -63,9 +65,12 @@ public class NormalRenderer
 				{
 					playState.getDrawWorld().getBlock(blockdrawstartx + i
 												, blockdrawstarty + j
-										   ).draw(screendrawstartx + i*16
-												, screendrawstarty + j*16
-												, render);
+										   ).draw(screendrawstartx + i*32
+												, screendrawstarty + j*32
+												, render
+												, playState.getDrawWorld().getTextureId(
+														blockdrawstartx + i
+														, blockdrawstarty + j));
 				}
 				
 				

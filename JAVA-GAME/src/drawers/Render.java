@@ -15,9 +15,11 @@ public class Render
 		this.g = g;
 	}
 	
-	public void RenderBlock(Image image, float sx, float sy)
+	public void RenderBlock(Image image, float sx, float sy, float a)
 	{
+		image.setRotation(a);
 		g.drawImage(image, sx - image.getCenterOfRotationX(), sy - image.getCenterOfRotationY());
+		image.setRotation(0);
 	}
 	
 	public void RenderBlockColor(Image image, int x, int y, Color color)
