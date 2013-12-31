@@ -39,31 +39,31 @@ public class MainMenuState extends State
 	
 	public void deinit() {}
 
-	public void KeyPressed(int key, char c) 
+	public void keyPressed(int key, char c) 
 	{
 		menus[currentmenu].KeyPressed(key, c);
 	}
-	public void KeyReleased(int key, char c) 
+	public void keyReleased(int key, char c) 
 	{
 		menus[currentmenu].KeyReleased(key, c);
 	}
 	
-	public void MousePressed(int key, int x, int y) 
+	public void mousePressed(int key, int x, int y) 
 	{
 		menus[currentmenu].MousePressed(key, x, y);
 	}
 		
-	public void MouseReleased(int key, int x, int y) 
+	public void mouseReleased(int key, int x, int y) 
 	{
 		menus[currentmenu].MouseReleased(key, x, y);
 	}
 	
-	public void MouseMove(int oldx, int oldy, int newx, int newy) 
+	public void mouseMove(int oldx, int oldy, int newx, int newy) 
 	{
 		menus[currentmenu].MouseMove(oldx, oldy, newx, newy);
 	}
 	
-	public void MouseWheelMoved(int change)
+	public void mouseWheelMoved(int change)
 	{
 		menus[currentmenu].MouseWheelMoved(change);
 	}

@@ -62,35 +62,36 @@ public class StateManager implements KeyListener, MouseListener
 
 	public void mouseDragged(int oldx, int oldy, int newx, int newy) 
 	{
+		states.get(currentState).mouseDragged(oldx,oldy,newx,newy);
 	}
 
 	public void mouseMoved(int oldx, int oldy, int newx, int newy)
 	{
-		states.get(currentState).MouseMove(oldx, oldy, newx, newy);
+		states.get(currentState).mouseMove(oldx, oldy, newx, newy);
 	}
 
 	public void mousePressed(int button, int x, int y) 
 	{
-		states.get(currentState).MousePressed(button, x, y);
+		states.get(currentState).mousePressed(button, x, y);
 	}
 
 	public void mouseReleased(int button, int x, int y) 
 	{
-		states.get(currentState).MouseReleased(button, x, y);
+		states.get(currentState).mouseReleased(button, x, y);
 	}
 
 	public void mouseWheelMoved(int change) 
 	{
-		states.get(currentState).MouseWheelMoved(change);
+		states.get(currentState).mouseWheelMoved(change);
 	}
 
 	public void keyPressed(int key, char c) 
 	{
-		states.get(currentState).KeyPressed(key, c);
+		states.get(currentState).keyPressed(key, c);
 	}
 
 	public void keyReleased(int key, char c)
 	{
-		states.get(currentState).KeyReleased(key, c);
+		states.get(currentState).keyReleased(key, c);
 	}
 }

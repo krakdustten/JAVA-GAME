@@ -59,14 +59,6 @@ public class Chunk
 	{
 		//TODO make block and entity updates
 	}
-	
-	public void drawEntitys(Graphics g)
-	{
-		for (Entity entity : entitys)
-		{
-			entity.draw(g);
-		}
-	}
 
 	public int getTextureId(int x, int y) 
 	{
