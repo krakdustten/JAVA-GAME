@@ -13,8 +13,9 @@ public class Main
 	
 	public static void main(String[] args)
 	{
-		Logger.initLogger();
+		Logger.initLogger();//init the logger
 		
+		Logger.println("Starting the game");
 		game = new Game("NO NAME GAME");//make the game
 		AppGameContainer container;//make the screen
 		try 

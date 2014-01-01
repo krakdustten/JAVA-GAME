@@ -7,12 +7,14 @@ import java.io.OutputStreamWriter;
 public class Logger 
 {
 	private static BufferedWriter log;//the log itself
+	private static long time;
 	
 	/** initialise the logger
 	 */
 	public static void initLogger()
 	{
 		log = new BufferedWriter(new OutputStreamWriter(System.out));//create the logger
+		time = System.currentTimeMillis();
 		println("logger initialised");
 	}
 	
@@ -47,7 +49,8 @@ public class Logger
 	public static void print(char[] s){print(String.valueOf(s));}
 	
 	/** print a text to the log and start a new line*/
-	public static void println(String text){println(text + "\n");}
+	public static void println(String text)
+	{print("["+Float.toString((System.currentTimeMillis()-time)/1000.0f)+"s]" + text + "\n");}
 	/** print an integer to the log and start a new line*/
 	public static void println(int i){println(Integer.toString(i));}
 	/** print a boolean to the log and start a new line*/

@@ -69,10 +69,10 @@ public class NormalRenderer
 				int drawblockx = blockdrawstartx + i;
 				int drawblocky = blockdrawstarty + j;
 				
-				if (drawblockx <= 0 || drawblockx >= playState.getDrawWorld().width*64)
+				if (drawblockx < 0 || drawblockx >= playState.getDrawWorld().width*64)
 				{
 				}
-				else if(drawblocky <= 0 || drawblocky >= playState.getDrawWorld().height*64)
+				else if(drawblocky < 0 || drawblocky >= playState.getDrawWorld().height*64)
 				{
 				}
 				else

@@ -4,6 +4,7 @@ package world.generator;
 
 import java.util.Random;
 
+import main.Logger;
 import world.World;
 
 public class WorldGenPlanet extends WorldGen
@@ -28,11 +29,12 @@ public class WorldGenPlanet extends WorldGen
 		sn1 = new SimplexNoise_octave(seed);
 		sn2 = new SimplexNoise_octave(seed+1);
 		sn3 = new SimplexNoise_octave(seed+2);
+		Logger.println("WorldGeneratorPlanet initialised");
 	}
 	
 	public void genWorld(int width, int height, int mediumlevel, World world)
 	{
-		
+		Logger.println("WorldGeneratorPlanet started worldgen");
 		long mediumlevel2 = mediumlevel;
 		
 		for(double i = 0; i < (width * 64); i++)
@@ -48,6 +50,8 @@ public class WorldGenPlanet extends WorldGen
 				world.setBlockIdWhitoutUpdate((int) i, j, 1);
 			}
 		}
+		Logger.println("WorldGeneratorPlanet world build");
+		Logger.println("WorldGeneratorPlanet updateting textures");
 		for(int i = 0; i < (width * 64); i++)
 		{
 			for(int j = 0; j < (height * 64); j++)
@@ -58,5 +62,7 @@ public class WorldGenPlanet extends WorldGen
 				}
 			}
 		}
+		Logger.println("WorldGeneratorPlanet textures updateted");
+		Logger.println("WorldGeneratorPlanet world generated");
 	}
 }

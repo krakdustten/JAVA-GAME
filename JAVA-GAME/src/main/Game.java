@@ -26,6 +26,7 @@ public class Game  extends BasicGame
 
 	public void init(GameContainer con) throws SlickException 
 	{
+		Logger.println("Game started");
 		sm = new StateManager(con);
 	}
 
