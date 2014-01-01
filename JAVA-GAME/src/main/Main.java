@@ -4,10 +4,6 @@ package main;
 //TODO save load system
 //TODO read options from the start
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
 
@@ -17,14 +13,7 @@ public class Main
 	
 	public static void main(String[] args)
 	{
-		BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
-        for (int i = 0; i < 100000; i++) {
-            try {
-				log.write(i + "\n");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-        }
+		Logger.initLogger();
 		
 		game = new Game("NO NAME GAME");//make the game
 		AppGameContainer container;//make the screen

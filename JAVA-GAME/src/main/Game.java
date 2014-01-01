@@ -32,5 +32,6 @@ public class Game  extends BasicGame
 	public void update(GameContainer con, int delta) throws SlickException
 	{
 		sm.update(con);
+		Logger.flush();
 	}
 }
