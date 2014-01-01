@@ -1,7 +1,5 @@
 package blocks;
 
-//TODO comments
-
 import java.util.Random;
 
 import org.newdawn.slick.SpriteSheet;
@@ -11,21 +9,38 @@ import drawers.Render;
 
 public abstract class Block 
 {
-	protected SpriteSheet sheet;
-	protected int ID;
+	protected SpriteSheet sheet;//the blocks spritesheet
+	protected int ID;//the ID of the block
 	
+	/** draw the block at the sx and sy
+	 * @param sx the screens x coordinate
+	 * @param sy the screens y coordinate
+	 * @param render the blockrenderer
+	 * @param textureId the id of the texture
+	 */
 	public void draw(float sx, float sy, Render render, int textureId)
 	{
+		//render the block
 		render.RenderBlock(sheet.getSprite(textureId%4, textureId/16), sx, sy, ((textureId/4)%4)*90);
 	}
 	
-	public void Update(int x, int y, World world,Random rand)
-	{
-		updateTexture(x,y,world,rand);
-	}
+	/** update the block
+	 * @param x the x coordinate of the block
+	 * @param y the y coordinate of the block
+	 * @param world the world the block is in
+	 * @param rand the random
+	 */
+	public void update(int x, int y, World world, Random rand){}
 
-	private void updateTexture(int x, int y, World world,Random rand) 
+	/** update the texture of the block
+	 * @param x the x coordinate of the block
+	 * @param y the y coordinate of the block
+	 * @param world the world the block is in
+	 * @param rand the random
+	 */
+	public void updateTexture(int x, int y, World world,Random rand) 
 	{
+		//all the different blocks around the x and y coordinate
 		boolean up = false;
 		boolean down = false;
 		boolean left = false;
@@ -38,6 +53,7 @@ public abstract class Block
 		int temp1 = 0;
 		int temp2 = 0;
 		
+		//set all dese vars
 		if(world.getBlockId(x+1, y) != 0){temp1++;right = true;}
 		if(world.getBlockId(x-1, y) != 0){temp1++;left = true;}
 		if(world.getBlockId(x, y+1) != 0){temp1++;up = true;}
@@ -47,8 +63,8 @@ public abstract class Block
 		if(world.getBlockId(x+1, y-1) != 0){temp2++;downright = true;}
 		if(world.getBlockId(x-1, y-1) != 0){temp2++;downleft = true;}
 
-		int textureId = 0;
-		int rotate = 0;
+		int textureId = 0;//the textureId
+		int rotate = 0;//the rotation of the block
 		
 		if(temp1 == 3)//1,10,11
 		{
@@ -152,16 +168,23 @@ public abstract class Block
 		
 	}
 
-	public void UpdateNeibeurs(int x, int y, World world, Random rand) 
+	/** update the texture of the block at x and y and all the block around it
+	 * @param x the x coordinate of the source block
+	 * @param y the y coordinate of the source block
+	 * @param world the world the blocks are in
+	 * @param rand the random
+	 */
+	public void UpdateNeibeurstextures(int x, int y, World world, Random rand) 
 	{
-		Update(x,y,world,rand);
-		world.getBlock(x+1, y).Update(x+1, y, world, rand);
-		world.getBlock(x-1, y).Update(x-1, y, world, rand);
-		world.getBlock(x, y+1).Update(x, y+1, world, rand);
-		world.getBlock(x, y-1).Update(x, y-1, world, rand);
-		world.getBlock(x+1, y+1).Update(x+1, y+1, world, rand);
-		world.getBlock(x+1, y-1).Update(x+1, y-1, world, rand);
-		world.getBlock(x-1, y+1).Update(x-1, y+1, world, rand);
-		world.getBlock(x-1, y-1).Update(x-1, y-1, world, rand);
+		//update the texture of the block itseft and blocks around it
+		updateTexture(x,y,world,rand);
+		world.getBlock(x+1, y).updateTexture(x+1, y, world, rand);
+		world.getBlock(x-1, y).updateTexture(x-1, y, world, rand);
+		world.getBlock(x, y+1).updateTexture(x, y+1, world, rand);
+		world.getBlock(x, y-1).updateTexture(x, y-1, world, rand);
+		world.getBlock(x+1, y+1).updateTexture(x+1, y+1, world, rand);
+		world.getBlock(x+1, y-1).updateTexture(x+1, y-1, world, rand);
+		world.getBlock(x-1, y+1).updateTexture(x-1, y+1, world, rand);
+		world.getBlock(x-1, y-1).updateTexture(x-1, y-1, world, rand);
 	}
 }

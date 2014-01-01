@@ -1,5 +1,7 @@
 package world.generator;
 
+//TODO comments
+
 import world.World;
 
 public abstract class WorldGen 

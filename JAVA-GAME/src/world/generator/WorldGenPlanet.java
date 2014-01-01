@@ -1,8 +1,9 @@
 package world.generator;
 
+//TODO comments
+
 import java.util.Random;
 
-import world.Chunk;
 import world.World;
 
 public class WorldGenPlanet extends WorldGen
@@ -44,7 +45,7 @@ public class WorldGenPlanet extends WorldGen
 			
 			for (int j = (int) hoogte; j < (height * 64); j++)
 			{
-				world.setBlockId((int) i, j, 1);
+				world.setBlockIdWhitoutUpdate((int) i, j, 1);
 			}
 		}
 		for(int i = 0; i < (width * 64); i++)
@@ -53,7 +54,7 @@ public class WorldGenPlanet extends WorldGen
 			{
 				if(world.getBlockId(i,j) != 0)
 				{
-					world.getBlock(i, j).Update(i, j, world, rand);
+					world.getBlock(i, j).updateTexture(i, j, world, rand);
 				}
 			}
 		}

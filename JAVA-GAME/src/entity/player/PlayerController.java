@@ -1,5 +1,7 @@
 package entity.player;
 
+//TODO comments
+
 import world.World;
 import drawers.NormalRenderer;
 import entity.Entity;

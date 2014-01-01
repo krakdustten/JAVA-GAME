@@ -4,8 +4,6 @@ package world;
 
 import java.util.ArrayList;
 
-import org.newdawn.slick.Graphics;
-
 import entity.Entity;
 import blocks.Block;
 

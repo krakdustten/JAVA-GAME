@@ -2,6 +2,8 @@ package world;
 
 //TODO comments
 
+import java.util.Random;
+
 import world.generator.WorldGenPlanet;
 import blocks.Block;
 import gameState.PlayState;
@@ -70,16 +72,21 @@ public class Planet extends World
 		return playstate.blocklist.getBlockFromID(0);
 	}
 	
-	public void setBlockId(int x, int y, int ID)
+	public void setBlockIdWhitoutUpdate(int x, int y, int ID)
 	{
 		chunks[x/64][y/64].setBlockId(x%64, y%64, ID);
+	}
+	
+	public void setBlockId(int x, int y, int ID)
+	{
+		setBlockIdWhitoutUpdate(x,y,ID);
+		getBlock(x,y).UpdateNeibeurstextures(x, y, this, new Random());;
 	}
 	
 	public void getReadyForPlayerSpawn(int x, int y) {}
 	public void spawnPlayer(int x, int y) {}
 	public void generateOrLoadWorld(int x, int y, int size) {}
 
-	@Override
 	public int getTextureId(int x, int y) 
 	{
 		return chunks[x/64][y/64].getTextureId(x%64, y%64);
