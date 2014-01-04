@@ -37,15 +37,6 @@ public class Planet extends World
 		int loadstartx = loadchunkspointx - loadchunksrange;
 		int loadstarty = loadchunkspointy - loadchunksrange;
 		
-		if(loadstartx < 0)
-		{
-			loadstartx = 0;
-		}
-		else if((loadstartx + loadwidth) >= width)
-		{
-			loadstartx = width - loadwidth;
-		}
-		
 		if (loadstarty < 0)
 		{
 			loadstarty = 0;
@@ -58,7 +49,11 @@ public class Planet extends World
 		{
 			for (int j = loadstarty; j <= (loadwidth + loadstarty); j++)
 			{
-				chunks[i][j].update();
+				if(i < 0)
+				{
+					i = width + i;
+				}
+				chunks[i%width][j].update();
 			}
 		}
 	}
@@ -67,14 +62,24 @@ public class Planet extends World
 	
 	public Block getBlock(int x, int y)
 	{
-		if(x>=0 && y>=0 && x<(width*64) && y<(height*64))
-			return chunks[x/64][y/64].getBlock(x%64, y%64);
+		if(y>=0 && y<(height*64))
+		{
+			if(x < 0)
+			{
+				x = width*64 + x;
+			}
+			return chunks[(x/64)%width][y/64].getBlock(x%64, y%64);
+		}
 		return playstate.blocklist.getBlockFromID(0);
 	}
 	
 	public void setBlockIdWhitoutUpdate(int x, int y, int ID)
 	{
-		chunks[x/64][y/64].setBlockId(x%64, y%64, ID);
+		if(x < 0)
+		{
+			x = width*64 + x;
+		}
+		chunks[(x/64)%width][y/64].setBlockId(x%64, y%64, ID);
 	}
 	
 	public void setBlockId(int x, int y, int ID)
@@ -89,19 +94,35 @@ public class Planet extends World
 
 	public int getTextureId(int x, int y) 
 	{
-		return chunks[x/64][y/64].getTextureId(x%64, y%64);
+		if(x < 0)
+		{
+			x = width*64 + x;
+		}
+		return chunks[(x/64)%width][y/64].getTextureId(x%64, y%64);
 	}
 
 	public int getBlockId(int x, int y) 
 	{
-		if(x>=0 && y>=0 && x<(width*64) && y<(height*64))
-			return chunks[x/64][y/64].getBlockId(x%64,y%64);
+		if(y>=0 && y<(height*64))
+		{
+			if(x < 0)
+			{
+				x = width*64 + x;
+			}
+			return chunks[(x/64)%width][y/64].getBlockId(x%64,y%64);
+		}
 		return 0;
 	}
 
 	public void setBlockTextureId(int x, int y, int ID) 
 	{
-		if(x>=0 && y>=0 && x<(width*64) && y<(height*64))
-			chunks[x/64][y/64].setBlockTextureId(x%64,y%64,ID);
+		if(y>=0 && y<(height*64))
+		{
+			if(x < 0)
+			{
+				x = width*64 + x;
+			}
+			chunks[(x/64)%width][y/64].setBlockTextureId(x%64,y%64,ID);
+		}
 	}
 }

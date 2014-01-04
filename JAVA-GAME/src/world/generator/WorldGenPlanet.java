@@ -15,9 +15,9 @@ public class WorldGenPlanet extends WorldGen
 	SimplexNoise_octave sn2;
 	SimplexNoise_octave sn3;
 	
-	final static double p1 = 2000;
-	final static double p2 = 500;
-	final static double p3 = 25;
+	final static double p1 = 500;
+	final static double p2 = 200;
+	final static double p3 = 10;
 	final static double t1 = 300;
 	final static double t2 = 10;
 	final static double t3 = 3;

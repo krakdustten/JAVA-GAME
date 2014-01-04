@@ -86,6 +86,9 @@ public class Player extends Entity
 		float tempx = x + dx;
 		float tempy = y + dy;
 		
+		if(tempx < 0){tempx = world.width*64 - tempx;}
+		else if(tempx >= world.width*64){tempx = tempx - world.width*64;}
+		
 		float tempy2 = tempy + 0.51f;
 		float tempx2 = tempx + 0.5f;
 		int tempy3 = (int) tempy2;

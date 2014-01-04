@@ -7,6 +7,8 @@ package main;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
 
+import saver.Saver;
+
 public class Main 
 {
 	public static Game game;
