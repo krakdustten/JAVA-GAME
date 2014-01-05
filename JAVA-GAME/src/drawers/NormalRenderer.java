@@ -69,25 +69,15 @@ public class NormalRenderer
 				int drawblockx = blockdrawstartx + i;
 				int drawblocky = blockdrawstarty + j;
 				
-				/*if (drawblockx < 0 || drawblockx >= playState.getDrawWorld().width*64)
+				if(drawblocky < 0 || drawblocky >= playState.getDrawWorld().height*64)
 				{
 				}
-				else if(drawblocky < 0 || drawblocky >= playState.getDrawWorld().height*64)
+				else
 				{
+					playState.getDrawWorld().getBlock(drawblockx, drawblocky)
+					.draw(screendrawstartx + i*32, screendrawstarty + j*32, render
+							, playState.getDrawWorld().getTextureId(drawblockx, drawblocky));
 				}
-				else*/
-				{
-					playState.getDrawWorld().getBlock(blockdrawstartx + i
-												, blockdrawstarty + j
-										   ).draw(screendrawstartx + i*32
-												, screendrawstarty + j*32
-												, render
-												, playState.getDrawWorld().getTextureId(
-														blockdrawstartx + i
-														, blockdrawstarty + j));
-				}
-				
-				
 			}
 		}
 		

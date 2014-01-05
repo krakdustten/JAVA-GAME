@@ -16,7 +16,7 @@ public class Saver
 	
 	final byte BOOLTYPE = 30;
 	final byte BYTETYPE = 31;
-	final byte CHARTYPE = 30;
+	final byte CHARTYPE = 32;
 	final byte INTTYPE = 33;
 	final byte LONGTYPE = 34;
 	final byte FLOATTYPE = 35;
@@ -187,10 +187,12 @@ public class Saver
 		} catch (IOException e) {e.printStackTrace();}
 	}
 	
-	public void stopDir()
+	public void stopDir(String name)
 	{
+		if(name.length() >= 256){return;}
 		try {
-			out.write(new byte[]{DIRSTOP});
+			out.write(new byte[]{DIRSTOP,(byte) name.length()});
+			out.write(Encoder.stringToBytes(name));
 			out.write(new byte[]{ENDLINE1,ENDLINE2});
 		} catch (IOException e) {e.printStackTrace();}
 	}

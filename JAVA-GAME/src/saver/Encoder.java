@@ -13,4 +13,13 @@ public class Encoder
 		}
 		return c;
 	}
+	
+	public static String bytesToString(char[] bytes)
+	{
+		for(int i = 0; i < bytes.length; i++)
+		{
+			bytes[i] = (char) (bytes[i] - 129); 
+		}
+		return String.copyValueOf(bytes);
+	}
 }
